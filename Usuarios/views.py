@@ -1,8 +1,11 @@
 from django.shortcuts import get_object_or_404,render
 from django.contrib.auth.forms import AuthenticationForm
 from django.contrib.auth import authenticate, login
+#Esto es un decorador que sirve para que solo usuarios autenticados puedan acceder 
+from django.contrib.auth.decorators import login_required
 
-from Usuarios.forms import UserRegisterForm
+from Usuarios.forms import UserRegisterForm, UserEditForm
+from Usuarios.models import Imagen
 
 # Create your views here.
 def usuario_login(request):
@@ -29,17 +32,34 @@ def usuario_registrar(request):
         
         if form.is_valid():
             form.save()
-           #return render(request,"productos/index.html")
-        msg_registro="Datos incorrectos"
+            return render(request,"Productos/index.html")
+        msg_registro="Error Datos incorrectos"
     form=UserRegisterForm()
     return render(request,"Usuarios/registro.html",{"form":form,"msg_registro":msg_registro})    
     
+@login_required
+def usuario_perfil(request):
+    usuario=request.user
+    
+    if request.method=='POST':
+        miFormulario=UserEditForm(request.Post,request.FILES,instance=usuario)
+        if miFormulario.is_valid():        
+            if miFormulario.cleaned_data.get('imagen'):
+                if Imagen.objects.filter(user=usuario).exists():
+                    usuario.imagen.imagen=miFormulario.cleaned_data.get('imagen')
+                    usuario.imagen.save()
+                else:
+                    avatar=Imagen(user=usuario,imagen=miFormulario.cleaned_data.get('imagen'))
+                    avatar.save()
+                    
+        miFormulario.save()
+        return render(request,"Productos/index.html")
+    else:
+        miFormulario=UserEditForm(instance=usuario)
 
 
-
-def usuario_perfil():
-    pass
-            
+        
+        
             
         
         
