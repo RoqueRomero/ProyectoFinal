@@ -1,6 +1,6 @@
 
 from django.http import HttpResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
 from django.urls import reverse_lazy
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
@@ -21,7 +21,7 @@ class listar(ListView):
     template_name="Productos/listar.html"
     
         
-    def envio(request):
+    def envio(self,request):
         valores=Item.objects.all()
         return render(request,self.template_name,{'items':valores})
     
@@ -31,6 +31,12 @@ class listar(ListView):
 class detalle(DetailView):
     model=Item
     template_name="Productos/detalle.html"
+    
+    
+    def busca(request,pk):
+        variable=get_object_or_404(Item,pk=pk) 
+        if request.method=='GET':
+            return render(request,"Productos/detalle.html",{'item':variable})
     
 
 #crear

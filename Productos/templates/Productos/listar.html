@@ -12,16 +12,21 @@
             <th width="40">Id</th>
             <th width="250">Nombre</th>
             <th width="250">Marca</th>
+            <th width="200">Ver Descripciones</th>
         </tr>
     {% for item in object_list %}  
         <tr>
             <td>{{item.id}}</td>
             <td> {{item.nombre}}</td>
             <td>{{item.marca}}</td>
+            <td><a href="{% url 'detalle' item.id %}">Detalle</a></td>
             </td>
         </tr>
         {% endfor %}
 </table>
+<br>
+
+<br>
 <br>
 <a href="../inicio/">Volver</a>
         

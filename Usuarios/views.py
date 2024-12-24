@@ -11,7 +11,8 @@ from Usuarios.models import Imagen
 def inicio(request):
     return render(request,'Usuarios/inicio.html')
 
-
+def acercade(request):
+    return render(request,'Usuarios/acercade.html')
 
 
 def usuario_login(request):
@@ -25,7 +26,7 @@ def usuario_login(request):
             user=authenticate(username=usuario,password=contrasenia)
             if user is not None:
                 login(request,user)
-                return render(request,'Productos/index.html')
+                return render(request,'Productos/iniciop.html')
             msg_login="Usuario o contraseña incorrectos"
     form=AuthenticationForm()
     return render(request,'Usuarios/login.html',{"form":form,"msg_login":msg_login})    
@@ -60,7 +61,7 @@ def usuario_perfil(request):
                     avatar.save()
                     
         miFormulario.save()
-        return render(request,"Productos/index.html")
+        return render(request,"Productos/iniciop.html")
     else:
         miFormulario=UserEditForm(instance=usuario)
 

@@ -11,6 +11,7 @@ urlpatterns = [
     path('registrar/',usuario_registrar),
     path('perfil/',usuario_perfil),
     path('inicio/',views.inicio),
+    path('acercade/',views.acercade)
     
 
     

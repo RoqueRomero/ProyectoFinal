@@ -6,6 +6,25 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Detalle</h1>
+    <h1 style="text-align: center;">Detalle</h1>
+    <table border="1">
+        <tr>
+            <th width="40">Id</th>
+            <th width="250">Nombre</th>
+            <th width="250">Marca</th>
+            <th width="400">Descripción</th>
+        </tr>
+    
+        <tr>
+            <td>{{item.id}}</td>
+            <td> {{item.nombre}}</td>
+            <td>{{item.marca}}</td>
+            <td>{{item.descripcion}}</td>
+        </tr>
+
+</table>
+<br>
+<br>
+<a href="../listar/">Volver</a>
 </body>
 </html>
