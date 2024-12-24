@@ -1,13 +1,8 @@
 <h1>Editar {{usuario}}</h1>
     
-<form action="" method="POST">
-    {% csrf_token %}
-
-    <table>
+    <form action="" method="POST">
+        {% csrf_token %}
+    
         {{ form.as_p}}
-
-    </table>
-    <input type="submit" value="Actualizar">
-
-
-</form>
+        <input type="submit" value="Actualizar">
+    </form>

@@ -13,5 +13,5 @@ urlpatterns = [
     path('listar/',listar.as_view()),
     path('inicio/',views.inicio),
     path('editar/<pk>',editar.as_view(),name="actualizar"),
-    # path('borrar/',borrar),
+    path('borrar/<pk>',borrar.as_view(),name="borrar"),
 ]

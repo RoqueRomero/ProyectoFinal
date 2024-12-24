@@ -54,11 +54,11 @@ class editar(UpdateView):
     model= Item
     form_class = CrearProducto
     template_name="Productos/crear.html"
-    fields=["nombre","marca","descripcion"]
     success_url=reverse_lazy('listar')
     
 
 #borrar
-class borrar():
-    pass
-
+class borrar(DeleteView):
+    model= Item
+    template_name="Productos/borrar.html"
+    success_url=reverse_lazy('listar')

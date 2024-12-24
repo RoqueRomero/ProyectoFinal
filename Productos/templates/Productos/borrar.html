@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Eliminar Producto</h1>
+    <br>
+    <br>
+    <form method="post">
+        {% csrf_token %}
+        <h3>Usted está por eliminar el producto: </h3>
+        <h3>ID:{{object.id}} - {{ object.nombre }} - {{object.marca}} - {{object.descripcion}}</h3>
+        <br>
+        <p>Seguro desea borrar?</p>
+        {{ form }}
+        <input type="submit" value="Confirmar">
+    </form>
+    
+<br>
+<br>
+<a href="../listar/">Volver</a>
+</body>
+</html>

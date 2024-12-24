@@ -59,11 +59,15 @@ def usuario_perfil(request):
                 else:
                     avatar=Imagen(user=usuario,imagen=miFormulario.cleaned_data.get('imagen'))
                     avatar.save()
-                    
+                    return render(request,"Usuarios/inicio.html")
+                return render(request,"Usuarios/inicio.html")
+            return render(request,"Usuarios/inicio.html")
         miFormulario.save()
-        return render(request,"Productos/iniciop.html")
+        return render(request,"Usuarios/inicio.html")
     else:
         miFormulario=UserEditForm(instance=usuario)
+        return render(request,"Usuarios/editar.html")
+
 
 
         

@@ -13,7 +13,7 @@
             <th width="250">Nombre</th>
             <th width="250">Marca</th>
             <th width="200">Ver Descripciones</th>
-            <th width="40">Editar</th>
+            <th colspan="2">Acciones</th>
         </tr>
     {% for item in object_list %}  
         <tr>
@@ -22,6 +22,7 @@
             <td>{{item.marca}}</td>
             <td><a href="{% url 'detalle' item.id %}">Detalle</a></td>
             <td><a href="{% url 'actualizar' item.id %}">Editar</a></td>
+            <td><a href="{% url 'borrar' item.id %}">Eliminar</a></td>
             </td>
         </tr>
         {% endfor %}
