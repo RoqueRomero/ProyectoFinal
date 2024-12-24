@@ -6,6 +6,10 @@ __pycache__/
 # C extensions
 *.so
 
+#Base de datos ignorar Roque Romero
+*.sqlite3
+
+
 # Distribution / packaging
 .Python
 build/
