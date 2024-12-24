@@ -8,6 +8,12 @@ from Usuarios.forms import UserRegisterForm, UserEditForm
 from Usuarios.models import Imagen
 
 # Create your views here.
+def inicio(request):
+    return render(request,'Usuarios/inicio.html')
+
+
+
+
 def usuario_login(request):
     msg_login = ""
     if request.method=='POST':
@@ -19,7 +25,7 @@ def usuario_login(request):
             user=authenticate(username=usuario,password=contrasenia)
             if user is not None:
                 login(request,user)
-                return render(request,'Usuarios/index.html')
+                return render(request,'Productos/index.html')
             msg_login="Usuario o contraseña incorrectos"
     form=AuthenticationForm()
     return render(request,'Usuarios/login.html',{"form":form,"msg_login":msg_login})    
@@ -34,6 +40,7 @@ def usuario_registrar(request):
             form.save()
             return render(request,"Productos/index.html")
         msg_registro="Error Datos incorrectos"
+        
     form=UserRegisterForm()
     return render(request,"Usuarios/registro.html",{"form":form,"msg_registro":msg_registro})    
     

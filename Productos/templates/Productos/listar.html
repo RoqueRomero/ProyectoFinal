@@ -1,11 +1,38 @@
-{% for item in object_list %}
-<h2>{{item.nombre}}</h2>
-<p>Marca: {{ item.marca}}</p>
-<a href="{% url detalle item.id %}">Detalle</a>
-{% if user.is_authenticated %}
-<a href="{% url editar item.id %}">Editar</a>
-<a href="{% url borrar item.id %}">Borrar</a>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1 style="text-align: center;">Listado de Productos</h1>
+<table border="1">
+        <tr>
+            <th width="40">Id</th>
+            <th width="250">Nombre</th>
+            <th width="250">Marca</th>
+        </tr>
+    {% for item in object_list %}  
+        <tr>
+            <td>{{item.id}}</td>
+            <td> {{item.nombre}}</td>
+            <td>{{item.marca}}</td>
+            </td>
+        </tr>
+        {% endfor %}
+</table>
+<br>
+<a href="../inicio/">Volver</a>
+        
+      
+
+    
+   
+        
+    
+</body>
+</html>
 
 
 
