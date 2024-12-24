@@ -47,11 +47,7 @@ class crear(CreateView):
     # fields=["nombre","marca","descripcion"]
     success_url=reverse_lazy('listar')
     
-    
-  
-           
 
-    
 
 #editar
 class editar():
@@ -60,9 +56,4 @@ class editar():
 #borrar
 class borrar():
     pass
-
-#Acerca de mi
-class about():
-    pass
-
 
